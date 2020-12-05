@@ -2,7 +2,7 @@ package ro.jademy.javafx;
 
 public class Model {
 
-    protected float calculate(long number1, long number2, String operator) {
+    protected float calculate(float number1, float number2, String operator) {
 
         switch (operator) {
             case "+":
@@ -15,7 +15,7 @@ public class Model {
                 if (number2 == 0) {
                     return 0;
                 } else {
-                    return number1 + number2;
+                    return number1 / number2;
                 }
             default:
                 return 0;

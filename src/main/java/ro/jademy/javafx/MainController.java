@@ -9,7 +9,7 @@ public class MainController {
 
     @FXML
     private Label result;
-    private long number1 = 0;
+    private float number1 = 0;
     private String operator = "";
     private boolean start = true;
     private Model model = new Model();
@@ -38,7 +38,7 @@ public class MainController {
             if (operator.isEmpty()) {
                 return;
             }
-            long number2 = Long.parseLong(result.getText());
+            float number2 = Long.parseLong(result.getText());
             float output = model.calculate(number1, number2, operator);
             result.setText(String.valueOf(output));
 

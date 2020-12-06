@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.Serializable;
+
 public class MainController {
 
     @FXML
@@ -12,7 +14,7 @@ public class MainController {
     private float number1 = 0;
     private String operator = "";
     private boolean start = true;
-    private Model model = new Model();
+    private final Model model = new Model();
 
     @FXML
     private void processNumbers(ActionEvent event) {
@@ -39,12 +41,16 @@ public class MainController {
                 return;
             }
             float number2 = Long.parseLong(result.getText());
-            float output = model.calculate(number1, number2, operator);
-            result.setText(String.valueOf(output));
+            Serializable output;
+            try {
+                output = model.calculate(number1, number2, operator);
+                result.setText(String.valueOf(output));
+            } catch (ArithmeticException ex) {
 
+                result.setText("Error");
+            }
             operator = "";
             start = true;
         }
-
     }
 }

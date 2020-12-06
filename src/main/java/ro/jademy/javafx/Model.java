@@ -1,8 +1,10 @@
 package ro.jademy.javafx;
 
+import java.io.Serializable;
+
 public class Model {
 
-    protected float calculate(float number1, float number2, String operator) {
+    protected Serializable calculate(float number1, float number2, String operator) {
 
         switch (operator) {
             case "+":
@@ -13,7 +15,7 @@ public class Model {
                 return number1 * number2;
             case "/":
                 if (number2 == 0) {
-                    return 0;
+                    return new ArithmeticException();
                 } else {
                     return number1 / number2;
                 }
